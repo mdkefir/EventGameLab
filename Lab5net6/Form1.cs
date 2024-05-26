@@ -7,7 +7,7 @@ namespace Lab5net6
         private int targetCount = 2; // Переменная для хранения количества целей в игре
         Random rnd = new Random(); // Создание объекта Random для генерации случайных чисел
         List<BaseObjects> objects = new(); // Создание списка объектов игры
-        BlackSpace blackSpace; // Объект пространства, через которое перемещаются объекты
+        /*BlackSpace blackSpace; // Объект пространства, через которое перемещаются объекты*/
         Player player; // Объект игрока
         Marker marker; // Объект маркера
         Target target; // Объект цели
@@ -16,10 +16,10 @@ namespace Lab5net6
         {
             InitializeComponent();
             // Создание объекта пространства и его настройка
-            blackSpace = new BlackSpace(PictureBox.Width / 4, PictureBox.Height, 0);
+            /*blackSpace = new BlackSpace(PictureBox.Width / 4, PictureBox.Height, 0);
             blackSpace.Width = PictureBox.Width / 4;
             blackSpace.Height = PictureBox.Height;
-            objects.Add(blackSpace); // Добавление объекта пространства в список объектов игры
+            objects.Add(blackSpace); // Добавление объекта пространства в список объектов игры*/
 
 
             // Создание объекта игрока и его настройка
@@ -63,7 +63,7 @@ namespace Lab5net6
         {
             var canvas = e.Graphics;
             canvas.Clear(Color.White); // Очистка холста000,,
-            updateSpace(); // Обновление пространства
+            /*updateSpace(); // Обновление пространства*/
             updatePlayer(); // Обновление игрока
             // Обновляем позицию игрока
             // Меняем тут objects на objects.ToList()
@@ -91,8 +91,8 @@ namespace Lab5net6
             foreach (var curr in objects.ToList()) // Перебор всех объектов игры
             {
                 canvas.Transform = curr.GetTransform(); // Установка новой матрицы трансформации для отображения объекта
-                if (curr != blackSpace && blackSpace.Overlaps(curr, canvas)) curr.Render(canvas, false); // Отрисовка объекта
-                else curr.Render(canvas); // Отрисовка объекта
+                /*if (curr != blackSpace && blackSpace.Overlaps(curr, canvas)) curr.Render(canvas, false); // Отрисовка объекта*/
+                curr.Render(canvas); // Отрисовка объекта
             }
         }
 
@@ -150,14 +150,14 @@ namespace Lab5net6
         }
 
         // Метод для обновления положения пространства
-        private void updateSpace()
+        /*private void updateSpace()
         {
             // Проверка, если область вышла за правую границу, вернуть ее налево
             if (blackSpace.X > (4 + 3 + 7 + 18) + PictureBox.Width + PictureBox.Width / 4) blackSpace.X = -PictureBox.Width / 4;
             blackSpace.vX = 3f; // Устанавливаем скорость по X
             blackSpace.X += blackSpace.vX; // Обновляем положение по X
 
-        }
+        }*/
 
         private void PictureBox_Click(object sender, EventArgs e)
         {
